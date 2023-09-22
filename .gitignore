@@ -1,0 +1,22 @@
+# Ignore the target directory, where build artifacts are stored
+/target/
+
+# Ignore .DS_Store files, which are created by macOS
+.DS_Store
+
+# Ignore files created by the Rust toolchain
+**/*.rs.bk
+
+# Ignore files created by some IDEs and text editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+
+# Ignore files related to Cargo.lock if you're building a library
+# Uncomment the next line if you're building a library
+# Cargo.lock
+
+# Ignore dotenv file
+.env
