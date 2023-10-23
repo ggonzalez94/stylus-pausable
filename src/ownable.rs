@@ -10,7 +10,6 @@ const ZERO_ADDRESS : Address = Address::ZERO;
 
 sol_storage! {
     pub struct Ownable {
-        /// Indicates whether the contract is paused
         address owner;
         bool initialized;
     }
@@ -31,7 +30,6 @@ pub enum OwnableError {
     OwnableAlreadyInitialized(OwnableAlreadyInitialized),
 }
 
-// We will soon provide a #[derive(SolidityError)] to clean this up
 impl From<OwnableError> for Vec<u8> {
     fn from(err: OwnableError) -> Vec<u8> {
         match err {
@@ -42,8 +40,7 @@ impl From<OwnableError> for Vec<u8> {
     }
 }
 
-// These methods aren't exposed to other contracts
-// Note: modifying storage will become much prettier soon
+// Internal methods
 impl Ownable {
     pub fn only_owner(
         &mut self,
@@ -70,7 +67,7 @@ impl Ownable {
     }
 }
 
-// These methods are external to other contracts
+// External methods
 #[external]
 impl Ownable {
     pub fn renounce_ownership(&mut self) -> Result<(), OwnableError> {

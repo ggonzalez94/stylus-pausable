@@ -3,12 +3,8 @@ const { ABI, ADDRESS } = require('./common');
 
 async function main() {
     const [signer] = await ethers.getSigners();
-    console.log('Signer:', signer.address);
-    console.log(ABI);
-    console.log(ADDRESS);
 
     const counter = await ethers.getContractAt(ABI, ADDRESS, signer);
-    console.log(counter);
     let tx, owner;
 
     owner = await counter.owner();

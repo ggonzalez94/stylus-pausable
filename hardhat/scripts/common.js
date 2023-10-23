@@ -11,4 +11,4 @@ exports.ABI = [
     'function unpause() external',
 ];
 
-exports.ADDRESS = '0x5d1bd020dc0b414a82feb81c23eff58624db79c3';
+exports.ADDRESS = '0xd03246cb94AFF245FA4155b19C73C878fBfb814B';

@@ -26,8 +26,7 @@ sol_storage! {
     }
 }
 
-/// Define an implementation of the generated Counter struct, defining a set_number
-/// and increment method using the features of the Stylus SDK.
+/// Implementation of the Counter struct. Inherits from Ownable and Pausable to allow ony the owner to pause the contract.
 #[external]
 #[inherit(Pausable, Ownable)]
 impl Counter {
@@ -51,12 +50,14 @@ impl Counter {
         Ok(())
     }
 
+    /// Pauses the contract.
     pub fn pause(&mut self) -> Result<(), Vec<u8>> {
         self.ownable.only_owner()?;
         self.pausable.pause()?;
         Ok(())
     }
 
+    /// Unpauses the contract.
     pub fn unpause(&mut self) -> Result<(), Vec<u8>> {
         self.ownable.only_owner()?;
         self.pausable.unpause()?;
